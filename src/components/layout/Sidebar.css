@@ -1,0 +1,111 @@
+/* frontend/src/components/layout/Sidebar.css */
+
+.sidebar {
+    /* Using vh-100 and sticky position from the component is usually sufficient */
+    /* If you need to override or ensure, you can add: */
+    /* height: 100vh; */
+    /* position: sticky; */
+    /* top: 0; */
+
+    background-color: var(--bs-light); /* Consistent with Bootstrap's light background */
+    border-right: 1px solid var(--bs-border-color-translucent); /* Subtle separator */
+    /* Optional: Add a subtle shadow for depth */
+    /* box-shadow: 1px 0 5px rgba(0, 0, 0, 0.05); */
+    padding-top: 1rem; /* Add some top padding */
+}
+
+/* Style Accordion Items for seamless look */
+.sidebar .accordion-item {
+    background-color: transparent; /* Blend with sidebar background */
+    border: none; /* Remove default borders */
+}
+
+/* Style Accordion Headers/Buttons */
+.sidebar .accordion-button {
+    background-color: transparent;
+    color: var(--bs-body-color); /* Standard text color */
+    font-weight: 500; /* Slightly bolder */
+    padding: 0.8rem 1.25rem; /* Adjust padding */
+    border-radius: 0; /* Remove default rounding if desired */
+}
+
+.sidebar .accordion-button:hover {
+    background-color: var(--bs-gray-200); /* Subtle hover */
+}
+
+.sidebar .accordion-button:focus {
+    box-shadow: none; /* Remove default focus ring */
+    /* Optionally add a custom focus indicator */
+    /* background-color: var(--bs-gray-200); */
+}
+
+/* Style when accordion section is open */
+.sidebar .accordion-button:not(.collapsed) {
+    background-color: var(--bs-gray-100); /* Slightly different background when open */
+    color: var(--bs-emphasis-color); /* Darker text when open */
+    font-weight: 600;
+}
+
+/* Style the expand/collapse icon */
+.sidebar .accordion-button::after {
+    /* Use Bootstrap's default icon, maybe change color or transition */
+    transition: transform 0.2s ease-in-out;
+    filter: grayscale(30%); /* Make icon slightly less prominent */
+}
+.sidebar .accordion-button:not(.collapsed)::after {
+   filter: none;
+}
+
+
+/* Remove padding from accordion body (already done in component, but good practice) */
+.sidebar .accordion-body {
+    padding: 0;
+    background-color: var(--bs-gray-100); /* Optional: Slightly different bg for sub-menu area */
+}
+
+
+/* Style Navigation Links */
+.sidebar .nav-link {
+    color: var(--bs-nav-link-color, #495057); /* Default nav link color or fallback */
+    padding: 0.6rem 1.25rem 0.6rem 2.5rem; /* Indented padding for sub-items */
+    font-size: 0.95rem;
+    border-radius: 4px; /* Subtle rounding for hover/active states */
+    margin: 0 0.5rem 2px 0.5rem; /* Add horizontal margin and tiny bottom margin */
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+/* Style top-level NavLinks directly under .sidebar (like Dashboard) */
+.sidebar > .nav-link {
+     padding-left: 1.25rem; /* Less indentation for top-level items */
+     margin-left: 0.5rem;
+     margin-right: 0.5rem;
+     font-weight: 500;
+}
+
+
+/* Hover State for Nav Links */
+.sidebar .nav-link:hover {
+    background-color: var(--bs-tertiary-bg); /* Use a subtle background variable */
+    color: var(--bs-emphasis-color); /* Darken text on hover */
+    text-decoration: none;
+}
+
+/* Active State for Nav Links */
+.sidebar .nav-link.active {
+    background-color: var(--bs-primary-bg-subtle); /* Primary subtle background */
+    color: var(--bs-primary); /* Primary text color */
+    font-weight: 600; /* Make active link bold */
+}
+
+/* Optional: Add a left border indicator for active links */
+/* .sidebar .nav-link.active {
+    border-left: 3px solid var(--bs-primary);
+    padding-left: calc(2.5rem - 3px); /* Adjust padding to keep text aligned */
+/* } */
+/* .sidebar > .nav-link.active { */
+    /* padding-left: calc(1.25rem - 3px); */
+    /* border-left: 3px solid var(--bs-primary); */
+/* } */
