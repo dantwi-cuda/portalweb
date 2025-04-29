@@ -1,0 +1,21 @@
+// Transition mixin
+@mixin transition($property: all, $duration: 0.3s, $timing: ease-in-out) {
+  transition: $property $duration $timing;
+}
+
+// Dark mode mixin
+@mixin dark-mode {
+  .dark & {
+    @content;
+  }
+}
+
+// Layout utility classes
+.page-min-height {
+  min-height: calc(var(--vh, 1vh) * 100 - 132px);
+}
+
+// Icon and Badge styles
+.icon-box {
+  @apply inline-flex items-center text-slate-600 dark:text-slate-300 text-lg ltr:mr-3 rtl:ml-3;
+}

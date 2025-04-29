@@ -1,5 +1,5 @@
 import React, { useState, ReactNode } from "react";
-import Icon from "@/components/ui/Icon";
+import Icon from "./Icon";
 
 interface AlertProps {
   children?: ReactNode;

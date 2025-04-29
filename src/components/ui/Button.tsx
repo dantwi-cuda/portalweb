@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import Icon from "@/components/ui/Icon";
+import Icon from "./Icon";
 import { Link } from "react-router-dom";
 
 interface ButtonProps {
@@ -50,8 +50,14 @@ const Button: React.FC<ButtonProps> = ({
               {icon && (
                 <span
                   className={`
-                    ${iconPosition === "right" ? "order-1 ltr:ml-2 rtl:mr-2" : ""}
-                    ${text && iconPosition === "left" ? "ltr:mr-2 rtl:ml-2" : ""}
+                    ${
+                      iconPosition === "right"
+                        ? "order-1 ltr:ml-2 rtl:mr-2"
+                        : ""
+                    }
+                    ${
+                      text && iconPosition === "left" ? "ltr:mr-2 rtl:ml-2" : ""
+                    }
                     ${iconClass}
                   `}
                 >
@@ -103,8 +109,14 @@ const Button: React.FC<ButtonProps> = ({
               {icon && (
                 <span
                   className={`
-                    ${iconPosition === "right" ? "order-1 ltr:ml-2 rtl:mr-2" : ""}
-                    ${text && iconPosition === "left" ? "ltr:mr-2 rtl:ml-2" : ""}
+                    ${
+                      iconPosition === "right"
+                        ? "order-1 ltr:ml-2 rtl:mr-2"
+                        : ""
+                    }
+                    ${
+                      text && iconPosition === "left" ? "ltr:mr-2 rtl:ml-2" : ""
+                    }
                     ${iconClass}
                   `}
                 >
@@ -156,8 +168,14 @@ const Button: React.FC<ButtonProps> = ({
               {icon && (
                 <span
                   className={`
-                    ${iconPosition === "right" ? "order-1 ltr:ml-2 rtl:mr-2" : ""}
-                    ${text && iconPosition === "left" ? "ltr:mr-2 rtl:ml-2" : ""}
+                    ${
+                      iconPosition === "right"
+                        ? "order-1 ltr:ml-2 rtl:mr-2"
+                        : ""
+                    }
+                    ${
+                      text && iconPosition === "left" ? "ltr:mr-2 rtl:ml-2" : ""
+                    }
                     ${iconClass}
                   `}
                 >

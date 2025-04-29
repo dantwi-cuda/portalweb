@@ -1,28 +1,29 @@
 // frontend/src/components/PrivateRoute.tsx
-import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import Spinner from 'react-bootstrap/Spinner';
+import React from "react";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import Loading from "./ui/Loading";
 
 const PrivateRoute: React.FC = () => {
-  const { token, isLoading } = useAuth(); // isLoading might be checked earlier now
+  const { token, isLoading, user } = useAuth();
+  const location = useLocation();
 
-  // If AppContent already handles global loading, this might be redundant
-  // or could be a secondary check.
   if (isLoading) {
-    // Or return null if AppContent handles the main loader
-    return (
-        <div className="d-flex justify-content-center align-items-center vh-100">
-             <Spinner animation="border" role="status">
-                <span className="visually-hidden">Checking Authentication...</span>
-            </Spinner>
-        </div>
-    );
+    return <Loading size="lg" />;
   }
 
-  // If authenticated, render the nested routes via Outlet.
-  // The nested routes will then decide between CustomerList or Layout.
-  return token ? <Outlet /> : <Navigate to="/login" replace />;
+  if (!token) {
+    // Redirect to login page with return URL
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  // Check if user has required role for this route
+  // This can be expanded based on route requirements
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return <Outlet />;
 };
 
 export default PrivateRoute;

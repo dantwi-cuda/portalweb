@@ -1,45 +1,48 @@
 // frontend/src/types/index.ts
 export interface User {
-    username: string;
-    email?: string | null;
-    full_name?: string | null;
-    disabled?: boolean | null;
-  }
-  
-  export interface TokenResponse {
-      access_token: string;
-      token_type: string;
-  }
-  
-  // --- New Types ---
-  export interface Customer {
-      id: number;
-      name: string;
-      domain_url: string;
-      logo_url?: string | null;
-  }
-  
-  export interface ShopLocationStat {
-      lat: number;
-      lng: number;
-      count: number;
-      location_name: string;
-  }
-  
-  export interface DashboardStats {
-      user_count: number;
-      shop_count: number;
-      shops_by_location: ShopLocationStat[];
-  }
-  // ---------------
-  
-  export interface AuthContextType {
-    token: string | null;
-    user: User | null;
-    isLoading: boolean;
-    customer: Customer | null; // <-- Add customer context
-    isSuperAdmin: boolean;    // <-- Flag for customer list view
-    login: (username: string, password: string) => Promise<void>;
-    logout: () => void;
-    checkAuthStatus: () => Promise<void>;
-  }
+  id: string;
+  name: string;
+  email: string;
+  role: 'admin' | 'customer-admin' | 'user';
+  username: string;
+  full_name?: string;
+  [key: string]: any;
+}
+
+export interface Customer {
+  id: string;
+  name: string;
+  domain: string;
+  logo_url?: string;
+  domain_url?: string;
+  settings?: {
+    [key: string]: any;
+  };
+}
+
+export interface AuthContextType {
+  token: string | null;
+  user: User | null;
+  isLoading: boolean;
+  customer: Customer | null;
+  isAdmin: boolean;
+  login: (email: string, password: string) => Promise<void>;
+  logout: () => void;
+  checkAuthStatus: () => Promise<void>;
+}
+
+export interface ShopLocationStat {
+  id: string;
+  name: string;
+  lat: number;
+  lng: number;
+  count: number;
+  location_name: string;
+  status: 'active' | 'inactive';
+}
+
+export interface DashboardStats {
+  user_count: number;
+  shop_count: number;
+  shopLocations: ShopLocationStat[];
+}
